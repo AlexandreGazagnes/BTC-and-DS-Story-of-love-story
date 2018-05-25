@@ -16,6 +16,11 @@
 ########################################################
 
 
+# In this script, we will attempt to make real predictions by forcing 
+# the model to learn on 50% of True targets and # 50% of False targets.
+# This should minimize the impact of the selected dataset period and will be useful for 
+# later.
+
 
 
 ########################################################

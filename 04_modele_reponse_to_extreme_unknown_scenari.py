@@ -16,6 +16,14 @@
 ########################################################
 
 
+# In this script, we will do an experiment. We will take real but extreme 
+# scenarios: huge crisis, euphoria, huge bubble etc; We will take them out of 
+# the training dataset and we will study the ability of the model to more or less 
+# predict these "extreme" scenarios.
+# Of course the result should not be good, but what interests us is a consistency 
+# or a correlation between the different results
+
+
 
 ########################################################
 #		Imports and configs

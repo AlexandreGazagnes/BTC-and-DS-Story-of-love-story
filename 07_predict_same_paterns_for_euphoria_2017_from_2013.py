@@ -16,6 +16,12 @@
 ########################################################
 
 
+# refer to 06_predict_post_crisis_2017_from_post_crisis_2013
+
+# In this script, we will try to overfit our model by taking two very similar
+# periods, one for the training and one for the test, and we will observe 
+# if our model, in these ideal conditions can make good predictions.
+
 
 
 ########################################################

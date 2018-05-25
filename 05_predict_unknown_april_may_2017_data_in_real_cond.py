@@ -16,6 +16,9 @@
 ########################################################
 
 
+# In this script, we will simply test the ability of our model to predict real 
+# and completely unknown data. We will take into account the data from April-May 
+# 2018, and will regraderons if the predictions are good or not.
 
 
 
