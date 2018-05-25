@@ -34,9 +34,9 @@ def build_file_paths() :
 	""" build and return all neeeded filepaths"""
 
 	# folders 
-	DATA_FOLDER = "/media/alex/CL/"	
-	TEMP_FOLDER = "/media/alex/CL/"
-	RESULT_FOLDER = "/media/alex/CL/"
+	DATA_FOLDER = "./data"
+	TEMP_FOLDER = "./temp"
+	RESULT_FOLDER = "./results"
 
 	# filenames 
 	DATA_FILENAME = "bitstamp_last_1_5_year_1H.csv"
