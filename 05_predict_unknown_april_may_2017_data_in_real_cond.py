@@ -24,28 +24,6 @@
 ########################################################
 
 
-# built in
-from itertools import combinations
-import pickle
-
-# data management
-import pandas as pd
-import numpy as np
-from stockstats import StockDataFrame
-
-# visualization
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# machine learning
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import accuracy_score
-from sklearn.ensemble import RandomForestClassifier
-
-# graphical config
-sns.set()
-# %matplotlib
-
 # lib
 from lib.filepaths import *
 from lib.preprocessing import *
