@@ -3,11 +3,11 @@
 
 
 
-######################################################
-######################################################
-#	first_drink_just_to_touch_on_the_topic.py
-######################################################
-######################################################
+#####################################################################
+#####################################################################
+#	01_model_brut_force_searcher
+#####################################################################
+#####################################################################
 
 
 
@@ -16,19 +16,7 @@
 ########################################################
 
 
-# This script is a kernel about doing machine learning with bitcoin prices
 
-# We will try to see if there is a correlation between 1, 2 or 3 last day prices
-# bull or bear, with a boolean approch, and ehance data with various basic
-# technical indicators.
-
-# It is necessary to explain that the purpose of this work is to have a free
-# play with ML and scikit learn, drawning baseliness, hypotesis, reflexion paths,
-# methodologic issues and trying to build a tougthful vision of ML, not to try
-# to predict next bitcoin prices. In other word, the main topic is
-# "Playing with ML" and not "About Bitcoin price prediction "
-
-# it his based on BTC-USD_H.csv dfset / see more on https://github.com/nalepae
 
 
 
