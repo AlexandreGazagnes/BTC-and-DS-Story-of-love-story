@@ -16,7 +16,10 @@
 ########################################################
 
 
-
+# In this script, we will study the impact of the size of the train 
+# and test dataset on the veracity of our predictions.
+# We logically expect that the smaller the size of the dataset 
+# stream, the worse our results are.
 
 
 

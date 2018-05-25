@@ -16,7 +16,10 @@
 ########################################################
 
 
-
+# In this script, we will study the impact of the function 
+# "predict_proba" on the veracity of our predictions.
+# We logically expect that the higher the probability requirement is, 
+# the better the results are.
 
 
 ########################################################
