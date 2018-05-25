@@ -5,20 +5,6 @@
 ########################################################
 
 
-# This script is a kernel about doing machine learning with bitcoin prices
-
-# We will try to debunk as deeply as possible results from previous kernel
-
-# to do so, we will take may various sub datasets, very very specific : "crisis"
-# "euphoria", "buble" and will see if our first baseline model is able to do 
-# good job without this data
-# the answer is of course not, but how bad will it work, very bad, very very bad
-# what will be the impact of predict_proba regarding our results? 
-
-# it his based on bitstampUSD_1-min_data_2012-01-01_to_2018-03-27.csv
-# see more on https://www.kaggle.com/mczielinski/bitcoin-historical-data/data
-
-
 
 ########################################################
 #		Imports and configs

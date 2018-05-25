@@ -16,15 +16,6 @@
 ########################################################
 
 
-# This script is a kernel about doing machine learning with bitcoin prices
-
-# We will continue to try to debunk as deeply as possible results 
-# from previous kernel
-
-
-# it his based on bitstampUSD_1-min_data_2012-01-01_to_2018-03-27.csv
-# reshaped in 1H
-# see more on https://www.kaggle.com/mczielinski/bitcoin-historical-data/data
 
 
 

@@ -16,17 +16,7 @@
 ########################################################
 
 
-# This script is a kernel about doing machine learning with bitcoin prices
 
-# We will continue to try to debunk as deeply as possible results 
-# from previous kernel
-
-# to do so, we will take a very big dataset but we will change the test_train
-# size from 30 to 90% 
-
-
-# it his based on bitstampUSD_1-min_data_2012-01-01_to_2018-03-27.csv
-# see more on https://www.kaggle.com/mczielinski/bitcoin-historical-data/data
 
 
 
