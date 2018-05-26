@@ -37,12 +37,12 @@ from lib.results import *
 ########################################################
 
 
+
 # File paths
 ####################################
 
 DATA_FILE, CLEANED_DF_FILE, \
 	PREPARED_DF_FILE, RESULT_BIN_FILE, RESULT_DF_FILE = build_file_paths()
-
 
 
 
@@ -57,14 +57,61 @@ P, NUMB = 12, 6
 FEAT_PRICES = [(i+1) * P for i in range(NUMB)]
 
 # features MAs
-MA_TYPE, MA_PERIOD = "sma", [100., 300., 600., 1000.]
+MA_TYPE ["ema", "sma"]
+
+# define ma periods
+# create first period tuples
+ma_periods = [(i, i*j, i*k) for i in [25, 30, 50, 100]
+			  for j in [1.25, 1.5, 2] for k in [3, 4, 5, 6, 8, 10]]
+ma_periods.extend([(i, i*j, i*k) for i in [25, 30, 50, 100] for j in [3, 4, 5] for k in [6, 8, 10]])
+
+# initiate dataframe and manage dtypes
+ma_periods = pd.DataFrame(ma_periods, columns=["ma1", "ma2", "ma3"])
+ma_periods["ma2"] = ma_periods.ma2.astype("int64")
+
+# drop useless tuples
+ma_periods["min_double"] = (
+	ma_periods.ma2 * 2 <= ma_periods.ma3) & (ma_periods.ma2 * 4 >= ma_periods.ma3)
+ma_periods = ma_periods[ma_periods["min_double"]]
+ma_periods.drop(["min_double"], axis=1, inplace=True)
+ma_periods.index = range(len(ma_periods))
+
+# convert in numpy array 2d
+
+# if you want all tuples
+MA_PERIOD = ma_periods.values
+
+# if you want x% of ma_periods 
+rate = 1
+mask = np.random.randint(0, len(ma_periods)+1, int(rate * len(ma_periods)))
+ma_periods = ma_periods.loc[mask, :]
+MA_PERIOD = ma_periods.values
+
+# if you want to add specific values
+specific_periods = pd.DataFrame([[30., 60., 180, np.nan], 
+								 [100., 300., 600., np.nan], 
+								 [100., 300., 1000., np.nan],
+								 [100., 600., 1000., np.nan],
+								 [100., 300., 600., 1000.]], 
+								 columns=["ma1", "ma2", "ma3", "ma4"])
+
+ma_periods = ma_periods.append(specific_periods)
+MA_PERIOD = ma_periods.values
+
+# # if you want just specific periods 
+# MA_PERIODS=  specific_periods.values 
+
+# build loop parser
+MA_LIST = [(typ, per) for typ in MA_TYPE for per in MA_PERIOD]
+
 
 # target prices
 TARGET_PRICES = [P, 2*P]
 
 # ML params
 MODEL_LIST = [RandomForestClassifier]
-MODEL_PARAMS = [{'n_estimators': [300], 'bootstrap': [True], 'oob_score':  [True], 'warm_start':  [True]}]
+MODEL_PARAMS = [{'n_estimators': [300, 500, 700, 1000], 'bootstrap': [True, False], 
+							'oob_score':  [True,False], 'warm_start':  [True,False]}]
 TEST_SIZE  = [0.3]
 CV = 10
 
@@ -80,23 +127,24 @@ DROP_RESULTS_COLS = ["results", "grid"]
 meta_results = create_meta_results(META_RESULTS_COL)
 save_bin_results(meta_results, RESULT_BIN_FILE)
 
-# intiate and clean dataframe
-df = create_df(DATA_FILE)
-df = clean_data(df, CLEANED_DF_FILE)
 
-# feat ingeenirng and targets
-df = add_features(df, FEAT_PRICES, MA_TYPE, MA_PERIOD, PREPARED_DF_FILE)
-df, targets = add_targets(df, TARGET_PRICES, PREPARED_DF_FILE)
-df = drop_useless_feat(df, PREPARED_DF_FILE)
+for ma_type, ma_period in MA_LIST : 
+	
+	# intiate and clean dataframe
+	df = create_df(DATA_FILE)
+	df = clean_data(df, CLEANED_DF_FILE)
+
+	# feat ingeenirng and targets
+	df = add_features(df, FEAT_PRICES, ma_type, ma_period, PREPARED_DF_FILE)
+	df, targets = add_targets(df, TARGET_PRICES, PREPARED_DF_FILE)
+	df = drop_useless_feat(df, PREPARED_DF_FILE)
 
 
 
-# Processing
-#####################################
+	# Processing
+	#####################################
 
-for target in targets : 
-
-	for test_size in TEST_SIZE :
+	for target in targets : 
 
 		# prepare X, y test and train
 		X,y = create_X_y(df, target, targets)
